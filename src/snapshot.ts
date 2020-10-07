@@ -22,7 +22,7 @@ class NodeEmitter {
 }
 
 const nodeEmitter = new NodeEmitter();
-const recordNodes = (emit: (i: number, n: INode) => void): void => {
+export const recordNodes = (emit: (i: number, n: INode) => void): void => {
   nodeEmitter.emit = emit;
 };
 
