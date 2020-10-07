@@ -15,7 +15,7 @@ const tagNameRegex = RegExp('[^a-z1-6-_]');
 export const IGNORED_NODE = -2;
 
 class NodeEmitter {
-  emit: (i: number, n: INode) => void;
+  emit: (i: number, n: INode) => void = (i: number, n: INode) => void 0;
   onNewNode(func: (i: number, n: INode) => void): void {
     this.emit = func;
   }
