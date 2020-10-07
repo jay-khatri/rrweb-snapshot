@@ -1,5 +1,5 @@
 import snapshot, {
-    nodeEmitter,
+    recordNodes,
     serializeNodeWithId,
     transformAttribute,
     visitSnapshot,
@@ -8,6 +8,7 @@ import snapshot, {
 import rebuild, { buildNodeWithSN, addHoverClass } from './rebuild';
 export * from './types';
 export {
+    recordNodes,
     snapshot,
     serializeNodeWithId,
     rebuild,
