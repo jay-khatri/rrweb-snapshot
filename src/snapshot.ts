@@ -14,6 +14,18 @@ const tagNameRegex = RegExp('[^a-z1-6-_]');
 
 export const IGNORED_NODE = -2;
 
+class NodeEmitter {
+  emit: (i: number, n: INode) => void = (i: number, n: INode) => void 0;
+  onNewNode(func: (i: number, n: INode) => void): void {
+    this.emit = func;
+  }
+}
+
+const nodeEmitter = new NodeEmitter();
+export const recordNodes = (emit: (i: number, n: INode) => void): void => {
+  nodeEmitter.emit = emit;
+};
+
 function genId(): number {
   return _id++;
 }
@@ -450,6 +462,7 @@ export function serializeNodeWithId(
     return null;  // slimDOM
   }
   map[id] = n as INode;
+  nodeEmitter.emit(id, n as INode);
   let recordChild = !skipChild;
   if (serializedNode.type === NodeType.Element) {
     recordChild = recordChild && !serializedNode.needBlock;
